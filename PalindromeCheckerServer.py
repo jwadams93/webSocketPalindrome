@@ -1,4 +1,4 @@
-import socket, threading, pickle, string
+import socket, threading, pickle, sys
 
 
 '''
@@ -16,12 +16,13 @@ class Server:
     #list of connections
 
 
-    def __init__(self):
+    def __init__(self, ip = "127.0.0.1", port=8000):
     #server constructor
-        self.sock.bind(("127.0.0.1", 8000))
+        self.sock.bind((ip, port))
         #Binding our server to an IP and port
         self.sock.listen(2)
         #Listening for clients. (Up to 2 clients)
+        print(f"Server has started. IP: {ip}, PORT: {port}")
 
     def handler(self, c, a):
         while True:
@@ -41,10 +42,13 @@ class Server:
                 break
 
     def palindrome(self, n):
-        n = n.replace(',', '')
-        n = n.replace('.', '')
-        n = n.replace('-', '')
-        n = n.replace(' ', '').lower()
+        n = n.lower()
+
+        charsToReplace = [',', '.', '-', ' ']
+
+        for char in n:
+            if char in charsToReplace:
+                n = n.replace(char, '')
 
         print(n)
 
@@ -71,6 +75,9 @@ class Server:
             print(str(a[0]) + ' : ' + str(a[1]), "connected")
 
 
-server = Server()
-server.run()
-
+if(len(sys.argv) == 1):
+    server = Server()
+    server.run()
+elif (len(sys.argv) > 1):
+    server = Server(ip=sys.argv[1], port=sys.argv[2])
+    server.run()
