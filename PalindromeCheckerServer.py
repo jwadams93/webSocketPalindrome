@@ -18,7 +18,7 @@ class Server:
 
     def __init__(self, ip = "127.0.0.1", port=8000):
     #server constructor
-        self.sock.bind((ip, port))
+        self.sock.bind((ip, int(port)))
         #Binding our server to an IP and port
         self.sock.listen(2)
         #Listening for clients. (Up to 2 clients)
