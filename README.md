@@ -1,6 +1,6 @@
 #webSocketPalindrome
 
-Instructions and Testing by Kaiser Clipston
+Instructions and Testing by Kaiser Clipston @kclipston
 
 This program takes in a string input over a network and determines if the string is a palindrome or not. If it is a palindrome the string “This is a palindrome!” is returned to the client. However, if the string is found to not be a palindrome the string “This is not a palindrome” is returned. 
 
