@@ -45,7 +45,7 @@ class Server:
         n = n.lower()
 
         for char in n:
-            if char in string.punctuation:
+            if char in string.punctuation or char == ' ':
                 n = n.replace(char, '')
 
         print(n)
