@@ -1,4 +1,4 @@
-import socket, threading, pickle, sys
+import socket, threading, pickle, sys, string
 
 
 '''
@@ -44,10 +44,8 @@ class Server:
     def palindrome(self, n):
         n = n.lower()
 
-        charsToReplace = [',', '.', '-', ' ']
-
         for char in n:
-            if char in charsToReplace:
+            if char in string.punctuation:
                 n = n.replace(char, '')
 
         print(n)
